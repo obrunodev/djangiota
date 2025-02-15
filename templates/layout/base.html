@@ -5,10 +5,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock title %} | Djangiota</title>
+    <meta name="description" content="Djangiota é um sistema de gestão de empréstimos para Factories">
+    <meta name="keywords" content="Empréstimo, agiotagem, dinheiro, money, dinheiro emprestado, serasa, banco, crédito">
+    <meta name="author" content="Bruno R. Pianca">
+    <meta name="DC.title" content="KiviCare Clinic And Patient Management Dashboard">
+    <meta name="setting_options" content='{&quot;saveLocal&quot;:&quot;sessionStorage&quot;,&quot;storeKey&quot;:&quot;kivicare&quot;,&quot;setting&quot;:{&quot;app_name&quot;:{&quot;value&quot;:&quot;KiviCare&quot;},&quot;theme_scheme_direction&quot;:{&quot;value&quot;:&quot;ltr&quot;},&quot;theme_scheme&quot;:{&quot;value&quot;:&quot;light&quot;},&quot;theme_style_appearance&quot;:{&quot;value&quot;:[&quot;theme-default&quot;]},&quot;theme_color&quot;:{&quot;value&quot;:&quot;default&quot;},&quot;theme_transition&quot;:{&quot;value&quot;:&quot;theme-with-animation&quot;},&quot;theme_font_size&quot;:{&quot;value&quot;:&quot;theme-fs-sm&quot;},&quot;page_layout&quot;:{&quot;value&quot;:&quot;container-fluid&quot;},&quot;header_navbar&quot;:{&quot;value&quot;:&quot;default&quot;},&quot;header_banner&quot;:{&quot;value&quot;:&quot;default&quot;},&quot;sidebar_color&quot;:{&quot;value&quot;:&quot;sidebar-white&quot;},&quot;card_color&quot;:{&quot;value&quot;:&quot;card-default&quot;},&quot;sidebar_type&quot;:{&quot;value&quot;:[]},&quot;sidebar_menu_style&quot;:{&quot;value&quot;:&quot;text-hover&quot;},&quot;footer&quot;:{&quot;value&quot;:&quot;default&quot;},&quot;body_font_family&quot;:{&quot;value&quot;:null},&quot;heading_font_family&quot;:{&quot;value&quot;:null}}}'>
+    <meta name="google_font_api" content="AIzaSyBG58yNdAjc20_8jAvLNSVi9E4Xhwjau_k">
+    <link rel="shortcut icon" href="{% static "img/favicon.png" %}" />
+    <link rel="stylesheet" href="{% static "css/core/libs.min.css" %}" />
+    <link rel="stylesheet" href="{% static "vendor/flaticon/css/flaticon.css" %}" />
+    <link rel="stylesheet" href="{% static "vendor/font-awesome/css/all.min.css" %}" />
+    <link rel="stylesheet" href="{% static "vendor/flatpickr/dist/flatpickr.min.css" %}" />
+    <link rel="stylesheet" href="{% static "vendor/sheperd/dist/css/sheperd.css" %}">
+    <link rel="stylesheet" href="{% static "vendor/sweetalert2/dist/sweetalert2.min.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/kivicare.min.css" %}" />
+    <link rel="stylesheet" href="{% static "css/custom.min.css" %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
 </head>
 <body>
     {% block content %}{% endblock content %}
 
     <script src="{% static "vendor/htmx/htmx.min.js" %}"></script>
+    <script src="{% static "js/core/libs.min.js" %}"></script>
+    <script src="{% static "vendor/sheperd/dist/js/sheperd.min.js" %}"></script>
+    <script src="{% static "js/plugins/tour.js" %}" defer></script>
+    <script src="{% static "vendor/flatpickr/dist/flatpickr.min.js" %}"></script>
+    <script src="{% static "js/plugins/flatpickr.js" %}" defer></script>
+    <script src="{% static "js/plugins/slider-tabs.js" %}"></script>
+    <script src="{% static "js/plugins/fslightbox.js" %}" defer></script>
+    <script src="{% static "vendor/sweetalert2/dist/sweetalert2.min.js" %}" async></script>
+    <script src="{% static "js/plugins/sweet-alert.js" %}" defer></script>
+    <script src="{% static "js/plugins/select2.js" %}" defer></script>
+    <script src="{% static "vendor/lodash/lodash.min.js" %}"></script>
+    <script src="{% static "js/iqonic-script/utility.min.js" %}"></script>
+    <script src="{% static "js/iqonic-script/setting.min.js" %}"></script>
+    <script src="{% static "js/setting-init.js" %}"></script>
+    <script src="{% static "js/core/external.min.js" %}"></script>
+    <script src="{% static "js/charts/widgetcharts.js" %}" defer></script>
+    <script src="{% static "js/charts/dashboard.js" %}" defer></script>
+    <script src="{% static "js/kivicare.js" %}" defer></script>
+    <script src="{% static "js/kivicare-advance.js" %}" defer></script>
+    <script src="{% static "js/sidebar.js" %}" defer></script>
 </body>
 </html>
