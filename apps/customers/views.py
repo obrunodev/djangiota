@@ -1,3 +1,4 @@
+from apps.customers.forms import CustomerForm
 from apps.customers.models import Customer
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -6,7 +7,7 @@ from django.urls import reverse_lazy
 
 class CustomerCreateView(LoginRequiredMixin, CreateView):
     model = Customer
-    fields = ['name', 'cpf', 'cnpj', 'address', 'phone']
+    form_class = CustomerForm
     success_url = reverse_lazy('customers:list')
 
     def form_valid(self, form):
@@ -24,7 +25,7 @@ class CustomerListView(LoginRequiredMixin, ListView):
 
 class CustomerUpdateView(LoginRequiredMixin, UpdateView):
     model = Customer
-    fields = ['name', 'cpf', 'cnpj', 'address', 'phone']
+    form_class = CustomerForm
     success_url = reverse_lazy('customers:list')
 
 

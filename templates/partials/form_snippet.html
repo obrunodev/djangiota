@@ -10,23 +10,7 @@ Variables:
     <div class="row">
         {% for field in form %}
             <div class="col-md-{{ col_size|default:"12" }} mb-3">
-                <input type="text" name="{{ field.name }}" id="{{ field.auto_id }}" placeholder="{{ field.label }}" class="form-control border" value="{{ field.value|default:"" }}">
-            
-                {% if field.help_text %}
-                    {% for text in field.help_text %}
-                        <small class="form-text">
-                            {{ text }}
-                        </small>
-                    {% endfor %}
-                {% endif %}
-
-                {% if field.errors %}
-                    {% for error in field.errors %}
-                        <small class="form-text text-danger mt-0">
-                            {{ error }}
-                        </small>
-                    {% endfor %}
-                {% endif %}
+                {{ field }}
             </div>
 
         {% endfor %}
