@@ -18,6 +18,12 @@ class CustomerListView(LoginRequiredMixin, ListView):
     model = Customer
     context_object_name = 'customers'
     paginate_by = 20
+    
+    def get_queryset(self):
+        qs = Customer.objects.filter(user=self.request.user)
+        if query := self.request.GET.get('q'):
+            qs = qs.filter(name__icontains=query)
+        return qs
 
 
 class CustomerUpdateView(LoginRequiredMixin, UpdateView):

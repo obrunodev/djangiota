@@ -24,6 +24,17 @@
         </div>
 
         <div class="card-body pt-0">
+            <form method="get">
+                <input
+                    type="text"
+                    name="q"
+                    placeholder="Pesquise pelo nome de um cliente e pressione 'ENTER'"
+                    class="form-control border mb-2"
+                    value="{{ request.GET.q }}">
+            </form>
+            <div class="text-end">
+                <a href="{% url "customers:list" %}" class="btn btn-primary mb-2">{% trans "Limpar filtro" %}</a>
+            </div>
             <div class="table-responsive">
                 <table class="table border-end border-start align-middle mb-0 rounded">
                     <thead class="table-dark">
@@ -65,7 +76,11 @@
                         {% empty %}
                             <tr>
                                 <td colspan="4" class="text-center">
-                                    {% trans "Nenhum cliente cadastrado." %}
+                                    {% if request.GET.q %}
+                                        {% trans "Nenhum cliente encontrado na pesquisa." %}
+                                    {% else %}
+                                        {% trans "Nenhum cliente cadastrado." %}
+                                    {% endif %}
                                 </td>
                             </tr>
                         {% endfor %}
