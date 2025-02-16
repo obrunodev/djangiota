@@ -1,3 +1,7 @@
+from apps.customers.models import Customer
 from django.contrib import admin
 
-# Register your models here.
+
+@admin.register(Customer)
+class CustomerAdmin(admin.ModelAdmin):
+    ...

@@ -1,0 +1,42 @@
+{% comment %} 
+Variables:
+- col_size: Quantos grids cada campo irá ocupar na row (Grid Bootstrap 5)
+- new_button_text: Texto do botão quando estiver criando novo objeto.
+- update_button_text: Texto do botão quando estiver editando um objeto.
+{% endcomment %}
+<form method="post">
+    {% csrf_token %}
+
+    <div class="row">
+        {% for field in form %}
+            <div class="col-md-{{ col_size|default:"12" }} mb-3">
+                <input type="text" name="{{ field.name }}" id="{{ field.auto_id }}" placeholder="{{ field.label }}" class="form-control border" value="{{ field.value|default:"" }}">
+            
+                {% if field.help_text %}
+                    {% for text in field.help_text %}
+                        <small class="form-text">
+                            {{ text }}
+                        </small>
+                    {% endfor %}
+                {% endif %}
+
+                {% if field.errors %}
+                    {% for error in field.errors %}
+                        <small class="form-text text-danger mt-0">
+                            {{ error }}
+                        </small>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+        {% endfor %}
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        {% if object.id %}
+            {{ update_button_text|default:"Atualizar" }}
+        {% else %}
+            {{ new_button_text|default:"Cadastrar" }}
+        {% endif %}
+    </button>
+</form>

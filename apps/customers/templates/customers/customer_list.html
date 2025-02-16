@@ -5,7 +5,76 @@
 {% block title %}{% trans "Clientes" %}{% endblock title %}
 
 {% block content %}
+    {% include "partials/breadcrumb.html" with section_name="Clientes" %}
 
-    <h1>{% trans "Clientes" %}</h1>
+    <div class="card">
+        <div class="card-header d-flex align-items-center justify-content-between flex-wrap gap-3">
+            <div>
+                <h4>{% trans "Clientes" %}</h4>
+                <span>{% trans "Gerencie seus clientes" %}</span>
+            </div>
+            <a href="{% url "customers:create" %}" class="btn btn-primary">
+                <span class="btn-inner">
+                    <span class="text d-inline-block align-middle">{% trans "Novo cliente" %}</span>
+                    <span class="icon d-inline-block align-middle ms-1 ps-2">
+                        <i class='bx bx-plus'></i>
+                    </span>
+                </span>
+            </a>
+        </div>
+
+        <div class="card-body pt-0">
+            <div class="table-responsive">
+                <table class="table border-end border-start align-middle mb-0 rounded">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>{% trans "Nome" %}</th>
+                            <th>{% trans "Telefone" %}</th>
+                            <th>CNPJ</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for customer in customers %}
+                            <tr data-item="list">
+                                <td>{{ customer.name }}</td>
+                                <td>{{ customer.phone }}</td>
+                                <td>{{ customer.cnpj|default:_("Não possui CNPJ") }}</td>
+                                <td class="text-end">
+                                    <div class="dropdown">
+                                        <button class="btn btn-link text-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class='bx bx-dots-horizontal-rounded' ></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a class="dropdown-item" href="{% url "customers:update" customer.id %}">
+                                                    <i class='bx bx-edit'></i>
+                                                    Editar
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item text-danger" href="{% url "customers:delete" customer.id %}">
+                                                    <i class='bx bx-trash'></i>
+                                                    Excluir
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td colspan="4" class="text-center">
+                                    {% trans "Nenhum cliente cadastrado." %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                {% include "partials/pagination.html" %}
+            </div>
+        </div>
+    </div>
 
 {% endblock content %}

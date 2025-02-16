@@ -1,0 +1,36 @@
+{% extends "layout/base.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "Excluir Cliente1" %}{% endblock title %}
+
+{% block content %}
+
+    <div class="card">
+        <div class="card-header d-flex align-items-center justify-content-between flex-wrap gap-3">
+            <div>
+                <h4>{% trans "Excluir cliente" %}</h4>
+                <span>{% trans "Confirme se deseja realmente excluir o cliente." %}</span>
+            </div>
+            <a href="{% url "customers:list" %}" class="btn btn-secondary">
+                <span class="btn-inner">
+                    <span class="text d-inline-block align-middle">{% trans "Cancelar" %}</span>
+                    <span class="icon d-inline-block align-middle ms-1 ps-2">
+                        <i class='bx bx-plus'></i>
+                    </span>
+                </span>
+            </a>
+        </div>
+        <div class="card-body">
+            <p class="mb-0">{% trans "Tem certeza que deseja excluir este cliente?" %}</p>
+            <p>{% trans "Cliente:" %} {{ object.name }}</p>
+            <p><small class="text-danger">{% trans "Todos os dados desse cliente serão pardidos." %}</small></p>
+
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Confirmar</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock content %}

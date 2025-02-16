@@ -1,5 +1,5 @@
 from apps.customers.models import Customer
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 
@@ -16,3 +16,16 @@ class CustomerCreateView(LoginRequiredMixin, CreateView):
 
 class CustomerListView(LoginRequiredMixin, ListView):
     model = Customer
+    context_object_name = 'customers'
+    paginate_by = 20
+
+
+class CustomerUpdateView(LoginRequiredMixin, UpdateView):
+    model = Customer
+    fields = ['name', 'cpf', 'cnpj', 'address', 'phone']
+    success_url = reverse_lazy('customers:list')
+
+
+class CustomerDeleteView(LoginRequiredMixin, DeleteView):
+    model = Customer
+    success_url = reverse_lazy('customers:list')

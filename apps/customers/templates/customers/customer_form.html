@@ -1,0 +1,32 @@
+{% extends "layout/base.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "Clientes" %}{% endblock title %}
+
+{% block content %}
+    {% include "partials/breadcrumb.html" with section_name="Clientes" %}
+
+    <div class="card">
+        <div class="card-header d-flex align-items-center justify-content-between flex-wrap gap-3">
+            <div>
+                {% if object.id %}
+                    <h4>{% trans "Editar cliente" %}</h4>
+                    <span>{% trans "Preencha os campos para editar o cliente selecinado." %}</span>
+                {% else %}
+                    <h4>{% trans "Novo cliente" %}</h4>
+                    <span>{% trans "Preencha os campos para cadastrar um novo cliente." %}</span>
+                {% endif %}
+            </div>
+            <a href="{% url "customers:list" %}" class="btn btn-secondary">
+                <span class="btn-inner">
+                    <span class="text d-inline-block align-middle">{% trans "Voltar" %}</span>
+                </span>
+            </a>
+        </div>
+        <div class="card-body pt-0">
+            {% include "partials/form_snippet.html" with col_size="6" %}
+        </div>
+    </div>
+
+{% endblock content %}
